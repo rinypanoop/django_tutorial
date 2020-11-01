@@ -23,7 +23,7 @@
     .sidenav a {
       padding: 6px 8px 6px 16px;
       text-decoration: none;
-      font-size: 19px;
+      font-size: 18px;
       color: white;
       display: block;
     }
@@ -35,7 +35,7 @@
     .main {
       margin-left: 240px;
       /* Same as the width of the sidenav */
-      font-size: 19px;
+      font-size: 18px;
       /* Increased text to enable scrolling */
       padding: 16px;
     }
@@ -69,7 +69,7 @@
       background-color: #eee;
       border: 1px solid #999;
       display: block;
-      padding: 20px;
+      padding: 5px;
     }
   </style>
 </head>
@@ -97,24 +97,30 @@
       <a href="#install_databse">
         <li>Database</li>
       </a>
-
-      <a href="#first_django_application">First django app</a>
-      <a href="#app_location">
-        <li>App Location</li>
+      <a href="#first_django_project">First django project</a>
+      <a href="#project_location">
+        <li>Project Location</li>
       </a>
-      <a href="#app_virtual_environment">
+      <a href="#project_virtual_environment">
         <li>Virtual Environment</li>
       </a>
-      <a href="#app_install_django">
+      <a href="#project_install_django">
         <li>Install Django</li>
       </a>
-
-      <a href="#app_start">
-        <li>Start the app</li>
+      <a href="#project_start">
+        <li>Start the project</li>
       </a>
-
-      <a href="#reference">Reference</a>
-
+      <a href="#mvc">First Django App(mvc)</a>
+      <a href="#mvc_models">
+        <li>Models</li>
+      </a>
+      <a href="#mvc_controller">
+        <li>URLs</li>
+      </a>
+      <a href="#mvc_views">
+        <li>Views</li>
+      </a>
+      <a href="#django_admin">Django Admin</a>
     </div>
 
     <div class="header" id="myHeader">
@@ -127,7 +133,7 @@
 
           <!-- Overview -->
 
-          <h2>Overview</h2>
+          <h2 style="color:brown">Overview</h2>
           <p id="overview">
             The technology and the proficiency required to build custom-fit solutions that reach a high level of
             expertise is quite challenging. Tools like web frameworks make the web application development painless.
@@ -187,7 +193,7 @@
 
         <!-- What you need -->
         <article id="what_you_need" style="text-align:justify">
-          <h2>What you need</h2>
+          <h2 style="color:brown">What you need</h2>
           <p id="what_you_need">
           <ul>
             <li>About 30 minutes.</li>
@@ -244,13 +250,16 @@ Type "help", "copyright", "credits" or "license" for more information.
         <!-- End of What you need -->
 
         <!-- First Project -->
-        <article id="first_django_application" style="text-align:justify">
-          <h2>First django app</h2>
-          <p id="app_location">
-            <b>App Location</b>
+        <article id="first_django_project" style="text-align:justify">
+          <h2 style="color:brown">First django project</h2>
+          In Djangot we often come across Projects and Apps. A project refers to the entire application and all its
+          parts.
+          An app refers to a submodule of the project.
+          <p id="project_location">
+            <b>Project Location</b>
             <br>
             <br>
-            Create an application folder in a prefered location of your computer.
+            Create an project folder in a prefered location of your computer.
           <pre>
               <code>
 $ mkdir django_tutorial
@@ -259,14 +268,14 @@ $ mkdir django_tutorial
           </p>
 
 
-          <p id="app_virtual_environment">
+          <p id="project_virtual_environment">
             <b>Virtual Environment</b>
             <br>
             <br>
             Before installing Django, it's prescribed to introduce a self-contained directory tree, a Virtualenv that
             establishes new disconnected environments which separate your Python records for every project you create.
             <br>
-            Go inside the app location (<code>cd django_tutorial</code>) to create the virtual environment using
+            Go inside the project location (<code>cd django_tutorial</code>) to create the virtual environment using
             following command.
             <br>
           <pre>
@@ -276,13 +285,12 @@ django_tutorial$ python3 -m venv tutorialenv
 
 In Windows command-line
 C:\Users\Name\django_tutorial>python -m venv tutorialenv
-
           </code>
         </pre>
           </p>
 
 
-          <p id="app_install_django">
+          <p id="project_install_django">
             <b>Install Django</b>
             <br>
             <br>
@@ -294,7 +302,6 @@ $source tutorialenv/bin/activate
 
 In Windows Command-line
 C:\Users\Name>tutorialenv/Scripts/activate
-
           </code>
         </pre>
           As soon as you find the prompt in your console having (tutorialenv) as prefix, this implies that your virtual
@@ -313,17 +320,16 @@ In MacOS Command-line
 In Window
 command -line
 (tutorialenv) C:\Users\Name>tutorialenv/Scripts>pip install django
-
           </code>
           </pre>
           </p>
 
-          <p id="app_start">
-            <b>Start the app</b>
+          <p id="project_start">
+            <b>Start the project</b>
             <br>
             <br>
 
-            Let’s begin to build our First app and see how to start it. The initial step is to start a new Django
+            Let’s begin to build our First project and see how to start it. The initial step is to start a new Django
             project. Essentially, this implies that we'll run a few scripts given by Django that will make a frame of a
             Django project. This is only a collection of directories and records that we will be utilizing later on.
 
@@ -343,7 +349,7 @@ For Windows In command-line
           </pre>
 
 
-          Next stage is the setting up of Database. In this app we will be using the default database, sqlite3. So,
+          Next stage is the setting up of Database. In this project we will be using the default database, sqlite3. So,
           we just need to do migrations using the next command on the console -
           <pre>
             <code>
@@ -351,7 +357,7 @@ In command-line
 (tutorialenv) ~$ python manage.py migrate
         </code>
       </pre>
-          We now try to start our first app, just type in the following command on the console -
+          We now try to start our first project, just type in the following command on the console -
           <pre>
         <code>
 In command-line
@@ -363,18 +369,210 @@ In command-line
           <br>In order to view this, just navigate to the following URL on your local web browser.
           <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>
           <br>
-          You get to see your website running !!! 
+          You get to see your website running !!!
           <br>
           <br>
-          <img id="iot" src="images/first_app.png"  style="width: 800px;height: 1000; border: 1px solid black;">
+          <img id="iot" src="images/first_project.png" style="width: 600px;height: 800; border: 1px solid black;">
           </p>
 
         </article>
         <!-- end of first project -->
 
 
+        <!-- MVC -->
+
+        <article id="mvc" style="text-align:justify">
+          <p>
+          <h2 style="color:brown">First Django App (mvc)</h2>
+          <br>
+          An app is a component or feature of the project. For example In an e-commerce project products abd cart can be
+          two apps. Use below command to create an App.
+          <pre>
+          <code>
+In command-line
+(tutorialenv) ~$     python manage.py startapp book
+          </code>
+        </pre>
+          Model-View-Controller (MVC) is a design pattern used for web applications.
+          Design pattern are certain standards used in software development to standardise variuos components and its
+          interactions.
+          <br>
+          <br>
+          MVC is one such pattern which helps to keep the code for defining and accessing data (Model) separate from
+          request routing logic (Controller), which in turn is separate from the user interface (View).
+          </p>
+
+          <p id="mvc_models">
+            <b>Django Models</b>
+            <br>
+            <br>
+            Django web applications access and manage data from databse and write to database through Python objects
+            known as models.
+            Whenever you've picked what database you need for your app(Which is supported by Django), you are free from
+            the burden of writing complex queries, as Django will manage all
+            communications with the database on your behalf.
+            <br>
+            <br>
+            A model is a class that enables to interact with a table in our DB, and where each property of the class is
+            a
+            field of the table.
+            <br>
+            <br>
+            In Django <code>model</code> is the built-in component that Django uses to generate tables and fields.
+            Models are characterized in the app/models.py file. so we open this file residing within our
+            app’s folder (app - give here the name of your own application) edit the code in IDE to look like:
+          <pre>
+              <code>
+# book/models.py
+1 from django.db import models
+2
+3 class Book(models.Model):
+4 # Fields
+5 	book_name = models.CharField(max_length=125)
+6 	author_name = models.CharField(max_length=200)
+7 
+8 #Methods
+9 def get_book_count(self):
+10
+11
+12 def _str_(self):
+13	return self.book_name;
+              </code>
+            </pre>
+          The final step here is to include our newly created model Book to our database. But first we will have to
+          ensure Django knows the changes we did to our new model Book. In order to do this we need to make migrations
+          using following command.
+          <pre>
+              <code>
+In command-line
+(tutorialenv) ~$ python manage.py makemigrations tutorial-site
+              </code>
+            </pre>
+
+          Django is now ready with the migration file which will now be added to our database once we type this command
+          python manage.py migrate tutorial-site on the console.
+
+          <pre>
+              <code>            
+In command-line
+(tutorialenv) ~$ python manage.py migrate tutorial-site
+            </code>
+            </pre>
+          Finally, with these steps we have added our self-created model Book to the database.
+          </p>
 
 
+          <p id="mvc_controller">
+            <b>Django URLs</b>
+            <br>
+            <br>
+
+
+            The urls.py file specifies which view is called for a mentioned URL. Whenever a user generates a request for
+            any page of your site, Django controller looks through the urls.py file, to find the respective view thus
+            returning the proper HTML response.
+
+            Open the app/urls.py file located within our app’s folder (app - give here the name of your own application)
+            and edit the code in IDE to look as :
+          <pre>
+  <code>
+# book/urls.py
+
+1 from django.urls import path
+2 from . import views
+3 urlpatterns = [(path ‘ ‘ , views.book_list, name=’book_list’),
+     # you can add more paths here
+]
+  </code>
+</pre>
+
+
+          We are importing Django’s function path and all of the views from your app. Line 3 is important as it defines
+          a mapping between URLs and views. In the sample, we assign a view named as book_list to the root URL.
+          </p>
+
+
+          <p id="mvc_views">
+            <b>Django Views</b>
+            <br>
+            <br>
+
+
+            A view sources information from your data set and conveys it to a template. The views.py file comprises the
+            business logic for a page within your website.
+
+            Open the app/views.py file located within our app’s folder (app - give here the name of your own
+            application) and edit the code in IDE to look as :
+          <pre>
+              <code>
+# book/views.py
+
+1 from django.shortcuts import render
+2 from django.http import HttpResponse
+3
+4 def book_list(request):
+5 	return render(request, ‘app/book_list.html’, {})
+</code>
+</pre>
+          </p>
+
+
+        </article>
+
+
+        <!-- End of APP MVC -->
+
+
+         <!-- Admin -->
+
+        <article id="django_admin" style="text-align:justify">
+          <p>
+          <h2 style="color:brown">Django Admin</h2>
+A web-based administrative backend is a standard component of most current sites. This interface, called as admin, permits confided site heads to build, alter and distribute content, manage the site clients and perform other managerial functions.
+
+Django accompanies an underlying administrator interface. With Django's administrator you can confirm clients, show and handle forms, and approve input; all autonomously. 
+The Django admin application uses your models in order to automatically generate a site area which can be utilized to create, display, edit and remove records. The Django project suggests to use it only for use internally within your organization, since this interface provides a lot of irrelevant details to the clients (which are best if hidden).
+
+All the settings needed to allow the admin application in our site is by default completed  at the very initial stage, when we create our First Django Project(which was discussed earlier in the tutorial).
+
+Now we are left with registering the models we created in the previous stage, so as to add them to the admin application. In order to achieve this, let’s open the app/admin.py file located within our app’s folder (app - give here the name of your own application) and edit the code in IDE to look as :
+
+
+
+<pre>
+  <code>
+# app/admin.py
+1 from django.contrib import admin
+2 
+3 #Register your model Book
+4
+5 from .models import Book
+6 
+7 admin.site.register(Book)
+</code>
+</pre>
+
+
+Using this sample code, you can register a model (or multiple models) with the admin site.
+
+We can also try creating a superuser, by following -
+<pre>
+  <code>
+For MacOS: In command-line
+(tutorialenv) ~$ python manage.py createsuperuser
+
+For Windows: In command-line
+(tutorialenv) C:\Users\Name> python manage.py createsuperuser
+</code>
+</pre>
+
+Now, a new superuser has been added to the database, which can be viewed if you restart the development server.
+
+          <br>
+          </p>
+        </article>
+
+ <!-- End of Admin -->
 
 
         <!-- Reference -->
