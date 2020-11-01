@@ -8,6 +8,18 @@
       font-family: "Lato", sans-serif;
     }
 
+    table,
+    td,
+    th {
+      border: 1px solid black;
+      padding: 1px;
+      table-layout: fixed;
+    }
+
+
+
+
+
     .sidenav {
       height: 100%;
       width: 240px;
@@ -49,15 +61,12 @@
     }
 
 
-    .sticky {
-      position: fixed;
-      top: 0;
-      width: 100%;
-    }
+
 
     @media screen and (max-height: 450px) {
       .sidenav {
         padding-top: 15px;
+        padding-bottom: 15px;
       }
 
       .sidenav a {
@@ -79,7 +88,7 @@
   <div id="wrapper">
 
     <div class="sidenav">
-      <a href="#wrapper"><img id="fprint" src="images/dj_logo.png" alt="" width="80x" height="70px"></a>
+      <a href="#wrapper"><img id="fprint" src="images/dj_logo.png" alt="" width="60x" height="60px"></a>
       <a href="#overview">Overview</a>
       <a href="#overview_what_is_django">
         <li>What is Django</li>
@@ -120,7 +129,16 @@
       <a href="#mvc_views">
         <li>Views</li>
       </a>
+      <a href="#mvc_form">
+        <li>Forms</li>
+      </a>
+      <a href="#mvc_orm">
+        <li>ORM</li>
+      </a>
       <a href="#django_admin">Django Admin</a>
+      <a href="#django_flask">Django vs Flask</a>
+
+      <br>
     </div>
 
     <div class="header" id="myHeader">
@@ -496,8 +514,6 @@ In command-line
             <b>Django Views</b>
             <br>
             <br>
-
-
             A view sources information from your data set and conveys it to a template. The views.py file comprises the
             business logic for a page within your website.
 
@@ -517,29 +533,85 @@ In command-line
           </p>
 
 
+          <p id="mvc_form">
+            <b>Django Forms</b>
+            <br>
+            <br>
+
+
+            HTML Forms are a flexible means of gathering input from the client having a provision for various types of
+            data, like text boxes, checkboxes, radio buttons, etc.
+            Django provides us with a ModelForm which can save the output of the form to the model directly.
+
+
+            Open the app/forms.py file from our app’s folder and edit the code in IDE to look like :
+          <pre>
+              <code>
+# app/forms.py
+
+1 from django import forms
+2 from django.forms import ModelForm
+3 from .models import * 		#import all model classes
+4 
+5 class TaskForm(forms.ModelForm)
+6   # TaskForm class inherits from the ModelForm
+7 
+8	 class Meta:	        #internal class to ModelForm
+9	    model = Task       #base model for our form
+10	    fields = ‘_all_’    #Django allowed to use all the form fields
+              </code>
+            </pre>
+
+          Now, since we are done with creating the ModelForm, we need to make a new view to manage this form, build a
+          form template and include the new view and form to the urls.py file in order to link to the form.
+
+
+          </p>
+
+
+          <p id="mvc_orm">
+            <b>Django ORM</b>
+            <br>
+            <br>
+
+            Object-relational mapper(ORM) is used to transfer data between model object and relational database.
+            The ORM automates this data transfer, and the developer need not write any SQL. ORM helps to write
+            error-free free code and helps to increase productivity.
+
+          </p>
+
         </article>
 
 
         <!-- End of APP MVC -->
 
 
-         <!-- Admin -->
+        <!-- Admin -->
 
         <article id="django_admin" style="text-align:justify">
           <p>
           <h2 style="color:brown">Django Admin</h2>
-A web-based administrative backend is a standard component of most current sites. This interface, called as admin, permits confided site heads to build, alter and distribute content, manage the site clients and perform other managerial functions.
+          A web-based administrative backend is a standard component of most current sites. This interface, called as
+          admin, permits confided site heads to build, alter and distribute content, manage the site clients and perform
+          other managerial functions.
 
-Django accompanies an underlying administrator interface. With Django's administrator you can confirm clients, show and handle forms, and approve input; all autonomously. 
-The Django admin application uses your models in order to automatically generate a site area which can be utilized to create, display, edit and remove records. The Django project suggests to use it only for use internally within your organization, since this interface provides a lot of irrelevant details to the clients (which are best if hidden).
+          Django accompanies an underlying administrator interface. With Django's administrator you can confirm clients,
+          show and handle forms, and approve input; all autonomously.
+          The Django admin application uses your models in order to automatically generate a site area which can be
+          utilized to create, display, edit and remove records. The Django project suggests to use it only for use
+          internally within your organization, since this interface provides a lot of irrelevant details to the clients
+          (which are best if hidden).
 
-All the settings needed to allow the admin application in our site is by default completed  at the very initial stage, when we create our First Django Project(which was discussed earlier in the tutorial).
+          All the settings needed to allow the admin application in our site is by default completed at the very initial
+          stage, when we create our First Django Project(which was discussed earlier in the tutorial).
 
-Now we are left with registering the models we created in the previous stage, so as to add them to the admin application. In order to achieve this, let’s open the app/admin.py file located within our app’s folder (app - give here the name of your own application) and edit the code in IDE to look as :
+          Now we are left with registering the models we created in the previous stage, so as to add them to the admin
+          application. In order to achieve this, let’s open the app/admin.py file located within our app’s folder (app -
+          give here the name of your own application) and edit the code in IDE to look as :
 
 
 
-<pre>
+          <pre>
   <code>
 # app/admin.py
 1 from django.contrib import admin
@@ -553,10 +625,10 @@ Now we are left with registering the models we created in the previous stage, so
 </pre>
 
 
-Using this sample code, you can register a model (or multiple models) with the admin site.
+          Using this sample code, you can register a model (or multiple models) with the admin site.
 
-We can also try creating a superuser, by following -
-<pre>
+          We can also try creating a superuser, by following -
+          <pre>
   <code>
 For MacOS: In command-line
 (tutorialenv) ~$ python manage.py createsuperuser
@@ -566,18 +638,139 @@ For Windows: In command-line
 </code>
 </pre>
 
-Now, a new superuser has been added to the database, which can be viewed if you restart the development server.
+          Now, a new superuser has been added to the database, which can be viewed if you restart the development
+          server.
 
           <br>
           </p>
         </article>
 
- <!-- End of Admin -->
+        <!-- End of Admin -->
+
+        <!-- Django vs Flask -->
+
+        <article id="django_flask" style="text-align:justify">
+          <h2 style="color:brown">Django vs Flask</h2>
+
+          <table style="border-collapse: collapse;">
+            <tbody>
+              <tr>
+                <td style="text-align: center;">
+                  <p><strong>SNO</strong></p>
+                </td>
+                <td style="text-align: center;">
+                  <p><strong>Comparison</strong></p>
+                </td>
+                <td style="text-align: center;">
+                  <p><strong>Django</strong></p>
+                </td>
+                <td style="text-align: center;">
+                  <p><strong>Flask</strong></p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>1</p>
+                </td>
+                <td>
+                  <p>Type of Framework</p>
+                </td>
+                <td>
+                  <p><strong>Full stack web framework</strong> - can create full-scale powerful web apps in Django.</p>
+                </td>
+                <td>
+                  <p><strong>WSGI framework-</strong> used for lightweight web applications where high speed is required
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>2</p>
+                </td>
+                <td>
+                  <p>Flexibility</p>
+                </td>
+                <td>
+                  <p><strong>Feature-Packed</strong> &ndash; Doesn&rsquo;t allow changes to its modules.</p>
+                </td>
+                <td>
+                  <p><strong>Full flexibility </strong>- can be extended with various development tools and libraries
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>3</p>
+                </td>
+                <td>
+                  <p>ORM</p>
+                </td>
+                <td>
+                  <p>Built-in ORM is used.</p>
+                </td>
+                <td>
+                  <p>No built-in ORM - SQLAIchemy is used.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>4</p>
+                </td>
+                <td>
+                  <p>Design</p>
+                </td>
+                <td>
+                  <p><strong>Batteries-included</strong> - more industry-oriented and therefore comes with built-in
+                    features.</p>
+                </td>
+                <td>
+                  <p><strong>Minimalistic design</strong> - provides only the scaffolding for a web app.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>5</p>
+                </td>
+                <td>
+                  <p>Working Style</p>
+                </td>
+                <td>
+                  <p><strong>Monolithic </strong>- The developer needs to follow certain rules to run the Django Project
+                  </p>
+                </td>
+                <td>
+                  <p><strong>Diversified</strong> - developers can use many web tools.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <!-- End of Django vs Flask -->
+
+
+        <article id="reference" style="text-align:justify">
+          <h2 style="color:brown">Future and Conclusions</h2>
+          Django although was initially developed to manage one-side, synchronous, request-response interactions based
+          on HTTP protocol, it was tedious to come up with non-HTTP protocols like websockets, which are quite common in
+          web world these days. Latest version Django 3.1, which just released a few weeks earlier, has made Django
+          fully supporting asynchronous protocols. This version is said to guarantee complete backward compatibility,
+          which ensures a shining future of Django in both sync and async protocols!
+          <br>
+          <br>
+          Some popular sites implementing Django include Instagram, Pinterest, Disqus, Mozilla, just to name a few. Some
+          big organizations like NASA, National Geographic, Google opt Django as their first preference tool.
+          <br>
+          <br>
+          Django is a powerful python based web framework that allows us to create different categories of web
+          applications.
+          </p>
+        </article>
 
 
         <!-- Reference -->
         <article id="reference" style="text-align:justify">
-          <h5 style="color:brown">Reference</h5>
+          <h2 style="color:brown">Reference</h2>
           <ol>
             <li><a href="https://www.djangoproject.com/">https://www.djangoproject.com
               </a>
