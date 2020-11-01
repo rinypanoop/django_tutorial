@@ -132,6 +132,7 @@
         <li>ORM</li>
       </a>
       <a href="#django_admin">Django Admin</a>
+      <a href="#implementation">Implementation</a>
       <a href="#django_flask">Django vs Flask</a>
       <a href="#future">Future and Conclusions</a>
       <br>
@@ -378,24 +379,25 @@ In command-line
 (tutorialenv) ~$ python manage.py runserver
         </code>
       </pre>
-
           Finally we have built our first website which is running on localhost.
-          <br>In order to view this, just navigate to the following URL on your local web browser.
+          <br>
+          In order to view this, just navigate to the following URL on your local web browser.
+
           <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>
           <br>
           You get to see your website running !!!
           <br>
           <br>
-          <img id="iot" src="images/first_project.png" style="width: 600px;height: 800; border: 1px solid black;">
+          <img id="iot" src="images/first_project.png"
+            style="width: 600px;height: 800; border: 1px solid black; display: block; margin-left: auto; margin-right: auto"">
           </p>
-
         </article>
         <!-- end of first project -->
 
 
         <!-- MVC -->
 
-        <article id="mvc" style="text-align:justify">
+        <article id=" mvc" style="text-align:justify">
           <p>
           <h2 style="color:brown">First Django App (mvc)</h2>
           <br>
@@ -643,6 +645,67 @@ For Windows: In command-line
 
         <!-- End of Admin -->
 
+
+        <!-- Implementation -->
+
+        <article id="implementation" style="text-align:justify">
+          <h2 style="color:brown">Implementation</h2>
+          <p>
+            <br>
+            Develop a Django web application to create a ‘To Do’ list. The application has a simple user interface to
+            create, update and delete To Dos.
+            <br>
+
+            <b>Specifications</b>
+            <br>
+          <ol>
+            <li>Follow <a href="#first_django_project">First django project</a> from this tutorial and create a project.
+            </li>
+
+            <li>Follow <a href="#mvc">First Django App(mvc)</a> from this tutorial and create an app named todo.</li>
+            <li>Create following python classes.
+              <ul>
+                <li>admin.py</li>
+                <li>forms.py</li>
+                <li>models.py</li>
+                <li>urls.py</li>
+                <li>views.py</li>
+              </ul>
+          </ol>
+
+          
+          <img id="iot" src="images/impl.png"
+          style="width: 600px;height: 800;">
+          <br>
+          <br>
+          <img id="iot" src="images/app_start_screenshot.png"
+          style="width: 600px;height: 800;">
+
+          <pre>
+          <code>
+--------Sample code snippet ------
+
+File: todo/tasks/urls.py
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+  path('', views.index, name="list"),
+  path('update_task/<str:pk>/', views.updateTask, name="update_task"),
+  path('delete/<str:pk>/', views.deleteTask, name="delete"),
+]
+          </code>
+        </pre>
+
+
+          </p>
+        </article>
+
+
+        <!-- End of Implementation -->
+
+
         <!-- Django vs Flask -->
 
         <article id="django_flask" style="text-align:justify">
@@ -744,25 +807,23 @@ For Windows: In command-line
 
         <!-- End of Django vs Flask -->
 
-
         <article id="future" style="text-align:justify">
           <h2 style="color:brown">Future and Conclusions</h2>
-          Django although was initially developed to manage one-side, synchronous, request-response interactions based
-          on HTTP protocol, it was tedious to come up with non-HTTP protocols like websockets, which are quite common in
-          web world these days. Latest version Django 3.1, which just released a few weeks earlier, has made Django
-          fully supporting asynchronous protocols. This version is said to guarantee complete backward compatibility,
+          Django was initially developed to manage one-side, synchronous and request-response interactions based
+          on HTTP protocol. There was no support for non-HTTP protocols like websockets.
+          <br>
+          Django 3.1, which just released a few weeks earlier, has asynchronous protocol support. This version is
+          backward compatible and
           which ensures a shining future of Django in both sync and async protocols!
           <br>
           <br>
-          Some popular sites implementing Django include Instagram, Pinterest, Disqus, Mozilla, just to name a few. Some
-          big organizations like NASA, National Geographic, Google opt Django as their first preference tool.
+          <p style="display: block; margin-left: auto;margin-right: auto;">Some <b>popular applications</b> are built
+            using Django!!!!!.</p>
+          <img id="iot" src="images/django_companies.png"
+            style="width: 600px;height: 800; border: 1px solid black; display: block; margin-left: auto; margin-right: auto">
           <br>
-          <br>
-          Django is a powerful python based web framework that allows us to create different categories of web
-          applications.
           </p>
         </article>
-
 
         <!-- Reference -->
         <article id="reference" style="text-align:justify">
