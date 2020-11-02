@@ -111,6 +111,7 @@
       <a href="#future">Future and Conclusions</a>
       <a href="#bibliography">Bibliography</a>
       <a href="#reference">Reference</a>
+      <a href="#faq">FAQ</a>
       <br>
       <br>
       <br>
@@ -267,18 +268,10 @@ command -line
           <pre>
             <code>
 
-(tutorialenv) ~$ django-admin startproject tutorial_site .
+(tutorialenv) ~$ django-admin startproject tutorial_site
             </code>
           </pre>
 
-
-          Next step is the setting up of Database. In this project, we will be using the default database, SQLite3. So,
-          we just need to do migrations using the next command on the console.
-          <pre>
-            <code>
-(tutorialenv) ~$ python manage.py migrate
-        </code>
-      </pre>
           We now try to run our first project, just type in the following command on the console.
           <pre>
         <code>
@@ -351,13 +344,6 @@ command -line
 4 # Fields
 5 	book_name = models.CharField(max_length=125)
 6 	author_name = models.CharField(max_length=200)
-7 
-8 #Methods
-9 def get_book_count(self):
-10
-11
-12 def _str_(self):
-13	return self.book_name;
               </code>
             </pre>
           Next step here is to include our newly created model Book to our database. But first we will have to
@@ -368,6 +354,13 @@ command -line
 (tutorialenv) ~$ python manage.py makemigrations tutorial-site
               </code>
             </pre>
+
+          <b>Note:</b> if you get an error <code>'PosixPath is not iterable'</code>, make below change.
+          <br>
+          In your settings.py file, use str() around DATABASES setting, i.e. 'NAME': str(BASE_DIR / 'db.sqlite3').
+
+          <br>
+          <br>
 
           Django is now ready with the migration file which will now be added to our database once we type this command,
           <code>python manage.py migrate tutorial-site </code> on the console.
@@ -392,7 +385,8 @@ command -line
             provides a lot of irrelevant details to the clients.
             <br>
             <br>
-            <a href="#bibliography_1" style="color: brown; font-size: 20px;"><b>[1]</b></a> <cite> The configuration
+            <a href="#bibliography_1" style="color: brown; font-size: 20px;font-weight: bold;">[1]</a> <cite> The
+              configuration
               required to include the
               admin application in our
               website was done automatically when we created our First Django Project.</cite> So no additional work is
@@ -426,7 +420,22 @@ command -line
   </code>
   </pre>
 
+          You will be promted to provide username, email password etc.
           <br>
+          <br>
+
+          Open <a href="http://127.0.0.1:8000/admin/">http://127.0.0.1:8000/admin/</a> in your browser, and login using
+          the superuser credentials. You will see the following admin dashboard.
+
+          <br>
+          <br>
+
+
+          <img src="images/admin.png"
+            style="width: 800px;height: 2000; display: block; margin-left: auto; margin-right: auto; border: 1px solid black;">
+          <br>
+          <br>
+
           </p>
 
 
@@ -454,6 +463,31 @@ command -line
                 ]
   </code>
 </pre>
+
+
+          Note : You also need to include URL mappings in your project/urls.py.
+
+          <pre>
+  <code>
+# tutorial-site/urls.py
+
+from django.contrib import admin
+from django.urls import path
+from django.urls import include
+from django.views.generic import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('book_list/', include('book.urls')),
+    path('', RedirectView.as_view(url='book_list/', permanent=True)),
+    static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
+]
+  </code>
+</pre>
+
+
           </p>
 
 
@@ -474,7 +508,7 @@ command -line
 2 from django.http import HttpResponse
 3
 4 def book_list(request):
-5 	return render(request, book/book_list.html’, {})
+5 return HttpResponse("You're viewing the book list.")
 </code>
 </pre>
           </p>
@@ -533,6 +567,10 @@ command -line
             Object-relational mapper(ORM) is used to transfer data between model object and relational database.
             The ORM automates this data transfer, and the developer need not write any SQL. ORM helps to write
             error-free code and helps to increase productivity.
+
+            <br>
+            <br>
+            QuerySet in Django represent a collection of objects from database  and helps to build queries.
 
           </p>
 
@@ -891,8 +929,53 @@ command -line
         <!-- end of Reference -->
 
 
+      <br>
+        <!-- FAQ -->
+        <article id="faq" style="text-align:justify">
+          <h2 style="color:brown">FAQ</h2>
+          <p>
+          <ol>
+            <li>
+              What is Django? In which language it is written?
+              <br>
+              <cite>
+                - Free and Opensource web application framework, written in python.
+              </cite>
+            </li>
+            <li>
+              What is Django Model?
+              <br>
+              <cite>
+                - A model is a Python object, which enables interactions between python and database tables.
+              </cite>
+            </li>
+            <li>
+              For which purposes Django Admin is used?
+              <br>
+              <cite>
+                - CRUD (Create, read, update, delete)
+              </cite>
+            </li>
+            <li>
+              What do you call a list of objects in a given model?
+              <br>
+              <cite>
+                - A Queryset
+              </cite>
+            </li>
+            <li>
+              What is ORM stands for?
+              <br>
+              <cite>
+                - Object Relational Mapper
+              </cite>
+            </li>
+          </ol>
+          </p>
 
+        </article>
 
+          <!-- End of FAQ -->
         <footer>
 
         </footer>
