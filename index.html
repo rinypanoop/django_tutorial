@@ -74,7 +74,8 @@
       background-color: #eee;
       border: 1px solid #999;
       display: block;
-      padding: 5px;
+      padding: 3px;
+      margin-top: 0px;
     }
   </style>
 </head>
@@ -135,6 +136,7 @@
       <a href="#implementation">Implementation</a>
       <a href="#django_flask">Django vs Flask</a>
       <a href="#future">Future and Conclusions</a>
+      <a href="#bibliography">Bibliography</a>
       <a href="#reference">Reference</a>
       <br>
       <br>
@@ -391,7 +393,7 @@ In command-line
           You get to see your website running !!!
           <br>
           <br>
-          <img  src="images/first_project.png"
+          <img src="images/first_project.png"
             style="width: 600px;height: 800; border: 1px solid black; display: block; margin-left: auto; margin-right: auto"">
           </p>
         </article>
@@ -542,7 +544,11 @@ In command-line
 
             HTML Forms are a flexible means of gathering input from the client having a provision for various types of
             data, like text boxes, checkboxes, radio buttons, etc.
-            Django provides us with a ModelForm which can save the output of the form to the model directly.
+
+            <a href="#bibliography_2" style="color: brown;"><b>[2]</b></a>Django provides a helper class that lets you
+            create a Form class from a
+            Django model. This class can save the output of the form to the model directly.
+
 
 
             Open the app/forms.py file from our app’s folder and edit the code in IDE to look like :
@@ -603,8 +609,10 @@ In command-line
           internally within your organization, since this interface provides a lot of irrelevant details to the clients
           (which are best if hidden).
 
-          All the settings needed to allow the admin application in our site is by default completed at the very initial
-          stage, when we create our First Django Project(which was discussed earlier in the tutorial).
+          <a href="#bibliography_1" style="color: brown;"><b>[1]</b></a> All the configuration required to include the
+          admin application in our
+          website was done automatically when we created our First Django Project(which was discussed earlier in the
+          tutorial).
 
           Now we are left with registering the models we created in the previous stage, so as to add them to the admin
           application. In order to achieve this, let’s open the app/admin.py file located within our app’s folder (app -
@@ -682,9 +690,9 @@ For Windows: In command-line
           </b>
           <br>
 
-          <img  src="images/impl.png" style="width: 600px;height: 800;">
+          <img src="images/impl.png" style="width: 600px;height: 800;">
           <br>
- <br>
+          <br>
 
           <b>
             --Sample code snippet --
@@ -709,7 +717,7 @@ For Windows: In command-line
             --Run the app localy--
           </b>
           <br>
-          <img  src="images/app_start_screenshot.png" style="width: 600px;height: 800;">
+          <img src="images/app_start_screenshot.png" style="width: 600px;height: 800;">
 
 
           <br>
@@ -720,28 +728,28 @@ For Windows: In command-line
           </b>
           <br>
 
-          <img  src="images/ec2.png" style="width: 600px;height: 800;">
+          <img src="images/ec2.png" style="width: 600px;height: 800;">
 
           <br>
           <br>
 
-          
 
 
-          <img  src="images/ec2_console.png" style="width: 600px;height: 800;">
 
-          
+          <img src="images/ec2_console.png" style="width: 600px;height: 800;">
+
+
           <br>
           <br>
 
-          
+
 
           <b>
             --View the app--
           </b>
           <br>
           <br>
-          <video width="600px" height="300px" controls>
+          <video width="600px" height="300px" controls muted>
             <source src="images/DjangoToDoApp.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -866,36 +874,107 @@ For Windows: In command-line
           <br>
           <p style="display: block; margin-left: auto;margin-right: auto;">Some <b>popular applications</b> are built
             using Django!!!!!.</p>
-          <img  src="images/django_companies.png"
+          <img src="images/django_companies.png"
             style="width: 600px;height: 800; border: 1px solid black; display: block; margin-left: auto; margin-right: auto">
           <br>
           </p>
         </article>
 
+
+
+        <!-- Bibliography -->
+        <article id="bibliography" style="text-align:justify">
+          <h2 style="color:brown">Bibliography</h2>
+
+          <p>
+
+
+          <p id="bibliography_1">
+            <b>[1]</b> “www.developer.mozilla.org”, Django Admin site, 2005-2020 Mozilla and individual contributors.
+            <br>
+            <cite>
+              Synopsis: this tutorial discusses the features and implementation of Django Admin application.
+              <br>
+              Reliability: the site contents are taken from the Mozilla Foundations.
+            </cite>
+          </p>
+
+          <p id="bibliography_2">
+            <b>[2]</b> “www.docs.djangoproject.com”, Creating Forms from models, 2005-2020 Django Software Foundation.
+            <br>
+            <cite>
+              Synopsis: this article discusses the special ModelForm classes provided by Django.
+              <br>
+              Reliability: the site referred here is the official website for django documentation, which provides us
+              everything we need to know about Django, in a well organised manner.
+            </cite>
+          </p>
+
+          </p>
+
+        </article>
+
+        <!-- End Bibliography -->
+
         <!-- Reference -->
         <article id="reference" style="text-align:justify">
           <h2 style="color:brown">Reference</h2>
           <ol>
-            <li><a href="https://www.djangoproject.com/">https://www.djangoproject.com
-              </a>
-            </li>
-            <br>
-            <li><a href="https://www.botreetechnologies.com/blog/guide-django-web-development-for-business">
-                https://www.botreetechnologies.com/blog/guide-django-web-development-for-business
-              </a><br>
-            </li>
-
-            <li><a
+            <li>
+              <a
                 href="https://www.academia.edu/44025451/The_Definitive_Guide_to_Django_Web_Development_Done_Right_Adrian_Holovaty_Jacob_K_Moss">
                 https://www.academia.edu/44025451/The_Definitive_Guide_to_Django_Web_Development_Done_Right_Adrian_Holovaty_Jacob_K_Moss
-              </a><br>
+              </a>
+              <br>
+              This book gives a good overview of what Django does and how to build a web app with this framework.
+            </li>
+            <li>
+              <a href="https://tutorial.djangogirls.org/en/django_start_project/">
+                https://tutorial.djangogirls.org/en/django_start_project/
+              </a>
+              <br>
+              This tutorial gives information about how to create the First Django Project.
             </li>
 
-            <br>
+            <li>
+              <a href="https://djangobook.com/mdj2-django-views/">
+                https://djangobook.com/mdj2-django-views/
+              </a>
+              <br>
+              This tutorial chapter, we get an overview of the basics of Django views.
+            </li>
 
+            <li>
+              <a href="https://data-flair.training/blogs/flask-vs-django/">
+                https://data-flair.training/blogs/flask-vs-django/
+              </a>
+              <br>
+              This blog discusses the comparison between the two-Python based frameworks Django and Flask.
+            </li>
+
+            <li>
+              <a href="https://docs.djangoproject.com/en/3.1/topics/async">
+                https://docs.djangoproject.com/en/3.1/topics/async
+              </a>
+              <br>
+              This document throws light on the latest Django version 3.1 which supports both synchronous and
+              asynchronous protocols.
+            </li>
           </ol>
+
+          <h3 style="color:brown">Image Reference</h3>
+          <p>
+            <a href="https://www.botreetechnologies.com/blog/guide-django-web-development-for-business">
+              https://www.botreetechnologies.com/blog/guide-django-web-development-for-business
+            </a>
+            <br>
+            This image lists some of the popular companies using Django frameworks.
+          </p>
+
         </article>
         <!-- end of Reference -->
+
+
 
 
         <footer>
