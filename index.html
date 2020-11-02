@@ -31,7 +31,7 @@
     .sidenav a {
       padding: 6px 8px 6px 16px;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 17px;
       color: white;
       display: block;
     }
@@ -43,7 +43,7 @@
     .main {
       margin-left: 240px;
       /* Same as the width of the sidenav */
-      font-size: 18px;
+      font-size: 17px;
       /* Increased text to enable scrolling */
       padding: 16px;
     }
@@ -85,10 +85,13 @@
       <a href="#wrapper"><img id="fprint" src="images/dj_logo.png" alt="" width="60x" height="60px"></a>
       <a href="#overview">Overview</a>
       <a href="#what_you_need">What you need</a>
-      <a href="#first_django_project">First django project</a>
-      <a href="#mvc">First Django App(mvc)</a>
+      <a href="#first_django_project">First Django project</a>
+      <a href="#first_django_app">First Django App(mvc)</a>
       <a href="#mvc_models">
         <li>Models</li>
+      </a>
+      <a href="#django_admin">
+        <li>Admin</li>
       </a>
       <a href="#mvc_controller">
         <li>URLs</li>
@@ -102,7 +105,7 @@
       <a href="#mvc_orm">
         <li>ORM</li>
       </a>
-      <a href="#django_admin">Django Admin</a>
+
       <a href="#implementation">Implementation</a>
       <a href="#django_flask">Django vs Flask</a>
       <a href="#future">Future and Conclusions</a>
@@ -187,7 +190,7 @@
 
         <!-- First Project -->
         <article id="first_django_project" style="text-align:justify">
-          <h2 style="color:brown">First django project</h2>
+          <h2 style="color:brown">First Django project</h2>
           In Djangot we often come across Projects and Apps. A project refers to the entire application and all its
           parts.
           An app refers to a submodule of the project.
@@ -296,11 +299,12 @@ command -line
           </p>
         </article>
         <!-- end of first project -->
+        <br>
+
+        <!-- First Django App (mvc) -->
 
 
-        <!-- MVC -->
-
-        <article id=" mvc" style="text-align:justify">
+          <article style=" text-align:justify" id="first_django_app">
           <p>
           <h2 style="color:brown">First Django App (mvc)</h2>
           <br>
@@ -326,19 +330,18 @@ command -line
             <br>
             Django web applications access and manage data from databse and write to database through Python objects
             known as models.
-            Whenever you've picked what database you need for your app(Which is supported by Django), you are free from
+            Once you have picked the database, for your app (which is supported by Django), you are free from
             the burden of writing complex queries, as Django will manage all
             communications with the database on your behalf.
             <br>
             <br>
-            A model is a class that enables to interact with a table in our DB, and where each property of the class is
-            a
-            field of the table.
+            A model is a class that enables to interact with a table in our DB, where each property of the class is
+            a field of the table.
             <br>
             <br>
-            In Django <code>model</code> is the built-in component that Django uses to generate tables and fields.
-            Models are characterized in the app/models.py file. so we open this file residing within our
-            app’s folder (app - give here the name of your own application) edit the code in IDE to look like:
+            In Django, <code>model</code> is the built-in component that Django uses to generate tables and fields.
+            Models are characterized in the app/models.py file.
+
           <pre>
               <code>
 # book/models.py
@@ -357,26 +360,73 @@ command -line
 13	return self.book_name;
               </code>
             </pre>
-          The final step here is to include our newly created model Book to our database. But first we will have to
+          Next step here is to include our newly created model Book to our database. But first we will have to
           ensure Django knows the changes we did to our new model Book. In order to do this we need to make migrations
           using following command.
           <pre>
               <code>
-In command-line
 (tutorialenv) ~$ python manage.py makemigrations tutorial-site
               </code>
             </pre>
 
-          Django is now ready with the migration file which will now be added to our database once we type this command
-          python manage.py migrate tutorial-site on the console.
+          Django is now ready with the migration file which will now be added to our database once we type this command,
+          <code>python manage.py migrate tutorial-site </code> on the console.
 
           <pre>
-              <code>            
-In command-line
+              <code> 
 (tutorialenv) ~$ python manage.py migrate tutorial-site
             </code>
             </pre>
-          Finally, with these steps we have added our self-created model Book to the database.
+          </p>
+
+
+          <p id="django_admin">
+            <b>Django Admin</b>
+            <br>
+            Django has a built-in Admin tool with an interface, which can be used to administer the Django app.
+            <br>
+            <br>
+            The Django admin application uses your models in order to automatically generate a site area which can be
+            utilized to create, display, edit and remove records.
+            The Django project suggests to use it only for use internally within your organization, since this interface
+            provides a lot of irrelevant details to the clients.
+            <br>
+            <br>
+            <a href="#bibliography_1" style="color: brown; font-size: 20px;"><b>[1]</b></a> <cite> The configuration
+              required to include the
+              admin application in our
+              website was done automatically when we created our First Django Project.</cite> So no additional work is
+            needed to include admin except registering models.
+
+            <br>
+            <br>
+            To register the models we created, open the app/admin.py file located within our app’s folder (app -
+            give here the name of your own application) and edit the code in IDE to look as :
+
+          <pre>
+    <code>
+  # book/admin.py
+  1 from django.contrib import admin
+  2 
+  3 #Register your model Book
+  4
+  5 from .models import Book
+  6 
+  7 admin.site.register(Book)
+  </code>
+  </pre>
+
+
+          Using this sample code, you can register a model (or multiple models) with the admin site.
+
+          We can also try creating a superuser, by following -
+          <pre>
+    <code>
+  (tutorialenv) ~$ python manage.py createsuperuser
+  </code>
+  </pre>
+
+          <br>
           </p>
 
 
@@ -386,11 +436,12 @@ In command-line
             <br>
 
 
-            The urls.py file specifies which view is called for a mentioned URL. Whenever a user generates a request for
+            The urls.py file specifies which view is called for a particular URL. Whenever a user generates a request
+            for
             any page of your site, Django controller looks through the urls.py file, to find the respective view thus
-            returning the proper HTML response.
+            returning HTML response.
 
-            Open the app/urls.py file located within our app’s folder (app - give here the name of your own application)
+            Open the app/urls.py file located in app’s folder (app - give here the name of your own application)
             and edit the code in IDE to look as :
           <pre>
   <code>
@@ -399,14 +450,10 @@ In command-line
 1 from django.urls import path
 2 from . import views
 3 urlpatterns = [(path ‘ ‘ , views.book_list, name=’book_list’),
-     # you can add more paths here
-]
+                # you can add more paths here
+                ]
   </code>
 </pre>
-
-
-          We are importing Django’s function path and all of the views from your app. Line 3 is important as it defines
-          a mapping between URLs and views. In the sample, we assign a view named as book_list to the root URL.
           </p>
 
 
@@ -414,10 +461,10 @@ In command-line
             <b>Django Views</b>
             <br>
             <br>
-            A view sources information from your data set and conveys it to a template. The views.py file comprises the
-            business logic for a page within your website.
+            A view fetches information from your data set and passes it to a template. The views.py file contains the
+            business logic for a page/view within your website.
 
-            Open the app/views.py file located within our app’s folder (app - give here the name of your own
+            Open the app/views.py file located in app's folder (app - give here the name of your own
             application) and edit the code in IDE to look as :
           <pre>
               <code>
@@ -427,7 +474,7 @@ In command-line
 2 from django.http import HttpResponse
 3
 4 def book_list(request):
-5 	return render(request, ‘app/book_list.html’, {})
+5 	return render(request, book/book_list.html’, {})
 </code>
 </pre>
           </p>
@@ -439,19 +486,24 @@ In command-line
             <br>
 
 
-            HTML Forms are a flexible means of gathering input from the client having a provision for various types of
+            HTML Forms are used to gather input data from the client/browser. It supports various types of
             data, like text boxes, checkboxes, radio buttons, etc.
+            <br>
+            <br>
+            <a href="#bibliography_2" style="color: brown; font-size: 20px;"><b>[2]</b></a> <cite> Django provides a
+              helper class that
+              lets you
+              create a Form class from a
+              Django model.</cite>
 
-            <a href="#bibliography_2" style="color: brown;"><b>[2]</b></a>Django provides a helper class that lets you
-            create a Form class from a
-            Django model. This class can save the output of the form to the model directly.
+            <br>
+            <br>
+            This class can map the data from the form to the model directly.
 
-
-
-            Open the app/forms.py file from our app’s folder and edit the code in IDE to look like :
+            Open the app/forms.py file in app’s folder and edit the code in IDE to look like :
           <pre>
               <code>
-# app/forms.py
+# book/forms.py
 
 1 from django import forms
 2 from django.forms import ModelForm
@@ -466,8 +518,8 @@ In command-line
               </code>
             </pre>
 
-          Now, since we are done with creating the ModelForm, we need to make a new view to manage this form, build a
-          form template and include the new view and form to the urls.py file in order to link to the form.
+          Next, we need to make a new view to manage this form. Build a
+          form template and include the new view and form to the urls.py file.
 
 
           </p>
@@ -480,119 +532,60 @@ In command-line
 
             Object-relational mapper(ORM) is used to transfer data between model object and relational database.
             The ORM automates this data transfer, and the developer need not write any SQL. ORM helps to write
-            error-free free code and helps to increase productivity.
+            error-free code and helps to increase productivity.
 
           </p>
+
+          <br>
+
+
+
 
         </article>
 
 
         <!-- End of APP MVC -->
-
-
-        <!-- Admin -->
-
-        <article id="django_admin" style="text-align:justify">
-          <p>
-          <h2 style="color:brown">Django Admin</h2>
-          A web-based administrative backend is a standard component of most current sites. This interface, called as
-          admin, permits confided site heads to build, alter and distribute content, manage the site clients and perform
-          other managerial functions.
-
-          Django accompanies an underlying administrator interface. With Django's administrator you can confirm clients,
-          show and handle forms, and approve input; all autonomously.
-          The Django admin application uses your models in order to automatically generate a site area which can be
-          utilized to create, display, edit and remove records. The Django project suggests to use it only for use
-          internally within your organization, since this interface provides a lot of irrelevant details to the clients
-          (which are best if hidden).
-
-          <a href="#bibliography_1" style="color: brown;"><b>[1]</b></a> All the configuration required to include the
-          admin application in our
-          website was done automatically when we created our First Django Project(which was discussed earlier in the
-          tutorial).
-
-          Now we are left with registering the models we created in the previous stage, so as to add them to the admin
-          application. In order to achieve this, let’s open the app/admin.py file located within our app’s folder (app -
-          give here the name of your own application) and edit the code in IDE to look as :
-
-
-
-          <pre>
-  <code>
-# app/admin.py
-1 from django.contrib import admin
-2 
-3 #Register your model Book
-4
-5 from .models import Book
-6 
-7 admin.site.register(Book)
-</code>
-</pre>
-
-
-          Using this sample code, you can register a model (or multiple models) with the admin site.
-
-          We can also try creating a superuser, by following -
-          <pre>
-  <code>
-For MacOS: In command-line
-(tutorialenv) ~$ python manage.py createsuperuser
-
-For Windows: In command-line
-(tutorialenv) C:\Users\Name> python manage.py createsuperuser
-</code>
-</pre>
-
-          Now, a new superuser has been added to the database, which can be viewed if you restart the development
-          server.
-
-          <br>
-          </p>
-        </article>
-
-        <!-- End of Admin -->
-
+        <br>
 
         <!-- Implementation -->
 
         <article id="implementation" style="text-align:justify">
           <h2 style="color:brown">Implementation</h2>
           <p>
-            <br>
-            Develop a Django web application to create a ‘To Do’ list. The application has a simple user interface to
+            Developed a Django web application to create a ‘To Do’ list. The application has a simple user interface to
             create, update and delete To Dos.
             <br>
             <br>
-
             <b>Specifications</b>
             <br>
           <ol>
-            <li>Follow <a href="#first_django_project">First django project</a> from this tutorial and create a project.
+            <li>Follow <a href="#first_django_project">First Django project</a> from this tutorial and create a project.
             </li>
 
-            <li>Follow <a href="#mvc">First Django App(mvc)</a> from this tutorial and create an app named todo.</li>
+            <li>Follow <a href="#first_django_app">First Django App(mvc)</a> from this tutorial and create an app named
+              todo.</li>
             <li>Create following python classes.
               <ul>
-                <li>admin.py</li>
-                <li>forms.py</li>
                 <li>models.py</li>
+                <li>admin.py</li>
                 <li>urls.py</li>
                 <li>views.py</li>
+                <li>forms.py</li>
               </ul>
           </ol>
 
           <b>
-            --Components and interactions--
+            Components and interactions
           </b>
           <br>
 
-          <img src="images/impl.png" style="width: 600px;height: 800;">
+          <img src="images/impl.png"
+            style="width: 800px;height: 1000; display: block; margin-left: auto; margin-right: auto;">
           <br>
           <br>
 
           <b>
-            --Sample code snippet --
+            Sample code snippet
           </b>
           <br>
           <pre>
@@ -604,36 +597,42 @@ For Windows: In command-line
   
   urlpatterns = [
     path('', views.index, name="list"),
-    path('update_task/<str:pk>/', views.updateTask, name="update_task"),
-    path('delete/<str:pk>/', views.deleteTask, name="delete"),
+    path('update_task/', views.updateTask, name="update_task"),
+    path('delete/', views.deleteTask, name="delete"),
   ]
             </code>
           </pre>
 
           <b>
-            --Run the app localy--
+            Run the application locally
           </b>
           <br>
-          <img src="images/app_start_screenshot.png" style="width: 600px;height: 800;">
+          <img src="images/app_start_screenshot.png"
+            style="width: 800px;height: 1000; display: block; margin-left: auto; margin-right: auto;">
 
 
           <br>
           <br>
 
           <b>
-            Deploy the app to EC2
+            Deployed the app into EC2
           </b>
           <br>
 
-          <img src="images/ec2.png" style="width: 600px;height: 800;">
+          <img src="images/ec2.png"
+            style="width: 800px;height: 1000;display: block; margin-left: auto; margin-right: auto;">
 
           <br>
           <br>
 
+          <b>
+            Application running status from EC2 console
+          </b>
+          <br>
 
 
-
-          <img src="images/ec2_console.png" style="width: 600px;height: 800;">
+          <img src="images/ec2_console.png"
+            style="width: 800px;height: 1000;display: block; margin-left: auto; margin-right: auto;">
 
 
           <br>
@@ -642,7 +641,7 @@ For Windows: In command-line
 
 
           <b>
-            --View the app--
+            View the app
           </b>
           <br>
           <br>
@@ -651,7 +650,9 @@ For Windows: In command-line
             Your browser does not support the video tag.
           </video-->
 
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/vih_lvilEQA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="800" height="450" src="https://www.youtube.com/embed/vih_lvilEQA" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen style="display: block; margin-left: auto; margin-right: auto;"> </iframe>
 
           </p>
           <br>
@@ -659,7 +660,7 @@ For Windows: In command-line
 
 
         <!-- End of Implementation -->
-
+        <br>
 
         <!-- Django vs Flask -->
 
@@ -762,14 +763,19 @@ For Windows: In command-line
 
         <!-- End of Django vs Flask -->
 
+        <br>
+
+        <!-- Future and Conclusions -->
+
         <article id="future" style="text-align:justify">
           <h2 style="color:brown">Future and Conclusions</h2>
-          Django was initially developed to manage one-side, synchronous and request-response interactions based
-          on HTTP protocol. There was no support for non-HTTP protocols like websockets.
+          Django was initially developed to manage synchronous request/response interactions based
+          on HTTP protocol. There was no support for non-HTTP protocols like websockets, which is asynchronous.
           <br>
-          Django 3.1, which just released a few weeks earlier, has asynchronous protocol support. This version is
-          backward compatible and
-          which ensures a shining future of Django in both sync and async protocols!
+          <br>
+          Django 3.1, which just released some time back, has asynchronous protocol support. This version is
+          backward compatible with previous releases and
+          this ensures a shining future of Django in both sync and async protocols!!!
           <br>
           <br>
           <p style="display: block; margin-left: auto;margin-right: auto;">Some <b>popular applications</b> are built
@@ -781,12 +787,17 @@ For Windows: In command-line
         </article>
 
 
+        <!-- End of Future and Conclusions -->
+
+        <br>
 
         <!-- Bibliography -->
         <article id="bibliography" style="text-align:justify">
           <h2 style="color:brown">Bibliography</h2>
 
           <p>
+
+
 
 
           <p id="bibliography_1">
@@ -799,6 +810,7 @@ For Windows: In command-line
             </cite>
           </p>
 
+
           <p id="bibliography_2">
             <b>[2]</b> “www.docs.djangoproject.com”, Creating Forms from models, 2005-2020 Django Software Foundation.
             <br>
@@ -808,6 +820,8 @@ For Windows: In command-line
               Reliability: the site referred here is the official website for django documentation, which provides us
               everything we need to know about Django, in a well organised manner.
             </cite>
+
+
           </p>
 
           </p>
@@ -815,6 +829,8 @@ For Windows: In command-line
         </article>
 
         <!-- End Bibliography -->
+
+        <br>
 
         <!-- Reference -->
         <article id="reference" style="text-align:justify">
@@ -841,7 +857,7 @@ For Windows: In command-line
                 https://djangobook.com/mdj2-django-views/
               </a>
               <br>
-              This tutorial chapter, we get an overview of the basics of Django views.
+              This tutorial chapter, provides an overview of the basics of Django views.
             </li>
 
             <li>
@@ -857,7 +873,7 @@ For Windows: In command-line
                 https://docs.djangoproject.com/en/3.1/topics/async
               </a>
               <br>
-              This document throws light on the latest Django version 3.1 which supports both synchronous and
+              This document throws light on the Django version 3.1 which supports both synchronous and
               asynchronous protocols.
             </li>
           </ol>
