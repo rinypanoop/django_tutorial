@@ -56,9 +56,6 @@
       font-size: 25px;
     }
 
-
-
-
     @media screen and (max-height: 450px) {
       .sidenav {
         padding-top: 15px;
@@ -80,42 +77,15 @@
   </style>
 </head>
 
+
 <body>
 
   <div id="wrapper">
-
     <div class="sidenav">
       <a href="#wrapper"><img id="fprint" src="images/dj_logo.png" alt="" width="60x" height="60px"></a>
       <a href="#overview">Overview</a>
-      <a href="#overview_what_is_django">
-        <li>What is Django</li>
-      </a>
-      <a href="#overview_django_framework">
-        <li>Django Framework</li>
-      </a>
       <a href="#what_you_need">What you need</a>
-      <a href="#install_python">
-        <li>Python</li>
-      </a>
-      <a href="#install_ide">
-        <li>IDE</li>
-      </a>
-      <a href="#install_databse">
-        <li>Database</li>
-      </a>
       <a href="#first_django_project">First django project</a>
-      <a href="#project_location">
-        <li>Project Location</li>
-      </a>
-      <a href="#project_virtual_environment">
-        <li>Virtual Environment</li>
-      </a>
-      <a href="#project_install_django">
-        <li>Install Django</li>
-      </a>
-      <a href="#project_start">
-        <li>Start the project</li>
-      </a>
       <a href="#mvc">First Django App(mvc)</a>
       <a href="#mvc_models">
         <li>Models</li>
@@ -149,19 +119,15 @@
 
     <div class="main">
       <section>
-        <article style="text-align:justify">
+        <article style="text-align:justify" id="overview">
 
           <!-- Overview -->
 
           <h2 style="color:brown">Overview</h2>
-          <p id="overview">
-            The technology and the proficiency required to build custom-fit solutions that reach a high level of
-            expertise is quite challenging. Tools like web frameworks make the web application development painless.
-            <br>
-            <br>
+          <p >
             Let us take a look at what is a Web Framework? During end of 90's and beginning of 20's developers had to
             write boiler plate code to build web applications. Each web applications were developed from scratch. This
-            approach was not scalable when it came to non trivial web applications. Many questions arised:
+            approach was not scalable when it came to non-trivial web applications. Many questions arised:
           <ul>
             <li>How to reduce time taken to market, if you do every development from scratch?</li>
             <li> How complex web pages like interacting with multiple databses can be developed?</li>
@@ -169,47 +135,28 @@
             <li> How can developer concentrate on business logic rather than writing bolier plate code?</li>
           </ul>
           Web application frameworks are evolved to solve these problems. A web application framework is a programming
-          infrastructure for your applications.
-          Where the developer concentrate on busines logic than the boiler plate code and helps to reduce the time taken
-          to reach market. Allows reusing of features and also helps to write clean and maintainable code. Django is one
-          such framework with many features to make developer's life easy.
+          infrastructure for your applications, where the developer concentrates on busines logic. It also allows reusing of features and also helps to write clean and maintainable code. 
+          <b>Django</b> is one such framework with many features to make developer's life easy.
           </p>
-          <p id="overview_what_is_django">
-            <b>What is Django?</b>
-            <br>
-            <br>
-            Django is quite a famous and well-featured server side framework, written in Python. Django enables hasty
-            development of protected as well as sustainable websites. Django encourages you to build complete,
-            adaptable,
-            versatile, secure and lightweight softwares.
-            <br>
-            <br>
-            In view of the quantity of prominent sites that make use of Django, the number of individuals consistently
-            adding to the codebase of this framework, and the count of persons giving both free and paid for support
-            options, we can imagine Django's popularity.
-          </p>
-          <p id="overview_django_framework">
-            <b>Django Framework</b>
-            <br>
-            <br>
-            Django is a free and open source framework that deals with a great part of the issue of web development,
+          
+          <p>
+            <b style="color: brown;">Django Framework</b> : 
+           is a free and open source framework that deals with a great part of the issue of web development,
             such
             that now you can concentrate completely on creating your application without bothering about remodeling a
-            pre-existing solution. Thus, it relieves a huge portion of the overhead involved in creating a new site.
+            pre-existing solution.
             <br>
             <br>
             Django follows the "Batteries included" concept making it a complete product in itself. With this framework,
             one can build nearly any type of website. Moreover, Django is capable of working with various categories of
             client-side frameworks.
             <br>
-            <br>
-            Django can run your app on different platforms which makes it highly portable.
-            <br>
           </p>
 
-        </article>
+        </article>  
         <!-- End of Overview -->
 
+        <br>
 
         <!-- What you need -->
         <article id="what_you_need" style="text-align:justify">
@@ -217,57 +164,23 @@
           <p id="what_you_need">
           <ul>
             <li>About 30 minutes.</li>
-            <li>Your favorite IDE or a text editor.</li>
-            <li>Python 3 (Django is written in the Python programming language).</li>
-            <li>Database</li>
+            <br>
+            <li>Your favorite IDE or a text editor. For beginners Visual Studio Code is recommended.</li>
+            <br>
+            <li><b>Python: </b>Django is written in the Python programming language. Make sure you have Python installed.</li>
+            <br>
+            <li><b>Database:</b> If you are developing a database application, you need to install Django supported database. SQLite
+              database is coming with Python itself.</li>
           </ul>
           </p>
-
-          <p id="install_python">
-            <b>Python</b>
-            <br>
-            <br>
-            Django is a collection of Python libraries. So to develop and run Django applications, we need Python
-            installed on the computer. The recommended version of Python is 3. You can verify Python installation by
-            typing <code>'python'</code> in command-line. Below is a sample from Mac Os.
-          <pre>
-              <code>
-$python
-Python 2.7.16 (default, Jan 26 2020, 23:50:38)
-[GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
-              </code>
-            </pre>
-          If not installed, you’ll have to download and install Python.
-          </p>
-
-          <p id="install_ide">
-            <b>IDE</b>
-            <br>
-            <br>
-            You can choose on of your favorite IDE from below list. For beginners Visual Studio Code is recommended.
-          <ul>
-            <li>PyCharm</li>
-            <li>Visual Studio Code</li>
-            <li>Visual Studio Code</li>
-            <li>Sublime Text</li>
-            <li>Atom</li>
-          </ul>
-          </p>
-
-
-          <p id="install_databse">
-            <br>
-            <b>Database</b>
-            <br>
-            <br>
-            If you are developing a database application you also need to install Django supported database. SQLite
-            database is coming with Python itself.
+            
           </p>
 
 
         </article>
         <!-- End of What you need -->
+
+        <br>
 
         <!-- First Project -->
         <article id="first_django_project" style="text-align:justify">
@@ -279,7 +192,7 @@ Type "help", "copyright", "credits" or "license" for more information.
             <b>Project Location</b>
             <br>
             <br>
-            Create an project folder in a prefered location of your computer.
+            Create a project folder in a prefered location on your computer.
           <pre>
               <code>
 $ mkdir django_tutorial
@@ -287,28 +200,21 @@ $ mkdir django_tutorial
             </pre>
           </p>
 
-
           <p id="project_virtual_environment">
             <b>Virtual Environment</b>
             <br>
             <br>
-            Before installing Django, it's prescribed to introduce a self-contained directory tree, a Virtualenv that
-            establishes new disconnected environments which separate your Python records for every project you create.
+            Before installing Django, we have to create a self-contained directory, which is a Virtual environment. A virtual environemnt separates your Python files for every project you create.
             <br>
             Go inside the project location (<code>cd django_tutorial</code>) to create the virtual environment using
             following command.
             <br>
           <pre>
           <code>
-In MacOS command-line
-django_tutorial$ python3 -m venv tutorialenv 
-
-In Windows command-line
-C:\Users\Name\django_tutorial>python -m venv tutorialenv
+django_tutorial$ python3 -m venv tutorialenv
           </code>
         </pre>
           </p>
-
 
           <p id="project_install_django">
             <b>Install Django</b>
@@ -317,7 +223,7 @@ C:\Users\Name\django_tutorial>python -m venv tutorialenv
             Now, since we created a virtual environment, next step will be to activate it using the below command.
           <pre>
           <code>
-In MacOS command-line
+In MacOS/Linux command-line
 $source tutorialenv/bin/activate
 
 In Windows Command-line
@@ -329,12 +235,10 @@ C:\Users\Name>tutorialenv/Scripts/activate
           <br>
           <br>
           Finally, we are now ready to Install Django. There are 3 methods to install Django, the best being the one
-          using pip command which gives us the latest stable version of Django. So in this tutorial, we suggest the same
-          pip tool for installation.
-
+          using pip command which gives us the latest stable version of Django.
           <pre>
         <code>
-In MacOS Command-line
+
 (tutorialenv) ~django_tutorial$pip3 install django
 
 In Window
@@ -348,39 +252,29 @@ command -line
             <b>Start the project</b>
             <br>
             <br>
-
-            Let’s begin to build our First project and see how to start it. The initial step is to start a new Django
-            project. Essentially, this implies that we'll run a few scripts given by Django that will make a frame of a
-            Django project. This is only a collection of directories and records that we will be utilizing later on.
-
-            The names of certain files are significant for Django. Note an important suggestion at this point, you ought
-            not rename or change the location of such files for a Django project.
-
+            Let’s begin to build our First project. We need to start a new Django project.
+            This implies that we'll run a few scripts given by Django, that will make a skeleton of 
+            Django project.
+            <br>
             In order to start the project, follow these steps -
           <pre>
             <code>
-For MacOS In command-line
-(tutorialenv) ~$ django-admin startproject tutorial_site .
-(Note the period at the end is mandatory.) 
 
-For Windows In command-line
-(tutorialenv) C:\Users\Name>django-admin startproject tutorial_site 
+(tutorialenv) ~$ django-admin startproject tutorial_site .
             </code>
           </pre>
 
 
-          Next stage is the setting up of Database. In this project we will be using the default database, sqlite3. So,
-          we just need to do migrations using the next command on the console -
+          Next step is the setting up of Database. In this project, we will be using the default database, SQLite3. So,
+          we just need to do migrations using the next command on the console.
           <pre>
             <code>
-In command-line
 (tutorialenv) ~$ python manage.py migrate
         </code>
       </pre>
-          We now try to start our first project, just type in the following command on the console -
+          We now try to run our first project, just type in the following command on the console.
           <pre>
         <code>
-In command-line
 (tutorialenv) ~$ python manage.py runserver
         </code>
       </pre>
@@ -402,7 +296,7 @@ In command-line
 
         <!-- MVC -->
 
-        <article id=" mvc" style="text-align:justify">
+        <article id="mvc" style="text-align:justify">
           <p>
           <h2 style="color:brown">First Django App (mvc)</h2>
           <br>
@@ -410,12 +304,11 @@ In command-line
           two apps. Use below command to create an App.
           <pre>
           <code>
-In command-line
-(tutorialenv) ~$     python manage.py startapp book
+(tutorialenv) ~$ python manage.py startapp book
           </code>
         </pre>
           Model-View-Controller (MVC) is a design pattern used for web applications.
-          Design pattern are certain standards used in software development to standardise variuos components and its
+          Design patterns are certain standards used in software development to standardise various components and its
           interactions.
           <br>
           <br>
