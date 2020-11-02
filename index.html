@@ -135,6 +135,9 @@
       <a href="#implementation">Implementation</a>
       <a href="#django_flask">Django vs Flask</a>
       <a href="#future">Future and Conclusions</a>
+      <a href="#reference">Reference</a>
+      <br>
+      <br>
       <br>
     </div>
 
@@ -388,7 +391,7 @@ In command-line
           You get to see your website running !!!
           <br>
           <br>
-          <img id="iot" src="images/first_project.png"
+          <img  src="images/first_project.png"
             style="width: 600px;height: 800; border: 1px solid black; display: block; margin-left: auto; margin-right: auto"">
           </p>
         </article>
@@ -655,6 +658,7 @@ For Windows: In command-line
             Develop a Django web application to create a ‘To Do’ list. The application has a simple user interface to
             create, update and delete To Dos.
             <br>
+            <br>
 
             <b>Specifications</b>
             <br>
@@ -673,33 +677,76 @@ For Windows: In command-line
               </ul>
           </ol>
 
-          
-          <img id="iot" src="images/impl.png"
-          style="width: 600px;height: 800;">
+          <b>
+            --Components and interactions--
+          </b>
           <br>
-          <br>
-          <img id="iot" src="images/app_start_screenshot.png"
-          style="width: 600px;height: 800;">
 
+          <img  src="images/impl.png" style="width: 600px;height: 800;">
+          <br>
+ <br>
+
+          <b>
+            --Sample code snippet --
+          </b>
+          <br>
           <pre>
-          <code>
---------Sample code snippet ------
+            <code>  
+  File: todo/tasks/urls.py
+  
+  from django.urls import path
+  from . import views
+  
+  urlpatterns = [
+    path('', views.index, name="list"),
+    path('update_task/<str:pk>/', views.updateTask, name="update_task"),
+    path('delete/<str:pk>/', views.deleteTask, name="delete"),
+  ]
+            </code>
+          </pre>
 
-File: todo/tasks/urls.py
-
-from django.urls import path
-from . import views
-
-urlpatterns = [
-  path('', views.index, name="list"),
-  path('update_task/<str:pk>/', views.updateTask, name="update_task"),
-  path('delete/<str:pk>/', views.deleteTask, name="delete"),
-]
-          </code>
-        </pre>
+          <b>
+            --Run the app localy--
+          </b>
+          <br>
+          <img  src="images/app_start_screenshot.png" style="width: 600px;height: 800;">
 
 
+          <br>
+          <br>
+
+          <b>
+            Deploy the app to EC2
+          </b>
+          <br>
+
+          <img  src="images/ec2.png" style="width: 600px;height: 800;">
+
+          <br>
+          <br>
+
+          
+
+
+          <img  src="images/ec2_console.png" style="width: 600px;height: 800;">
+
+          
+          <br>
+          <br>
+
+          
+
+          <b>
+            --View the app--
+          </b>
+          <br>
+          <br>
+          <video width="600px" height="300px" controls>
+            <source src="images/DjangoToDoApp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
           </p>
+          <br>
         </article>
 
 
@@ -819,7 +866,7 @@ urlpatterns = [
           <br>
           <p style="display: block; margin-left: auto;margin-right: auto;">Some <b>popular applications</b> are built
             using Django!!!!!.</p>
-          <img id="iot" src="images/django_companies.png"
+          <img  src="images/django_companies.png"
             style="width: 600px;height: 800; border: 1px solid black; display: block; margin-left: auto; margin-right: auto">
           <br>
           </p>
