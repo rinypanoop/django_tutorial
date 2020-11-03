@@ -570,7 +570,7 @@ urlpatterns = [
 
             <br>
             <br>
-            QuerySet in Django represent a collection of objects from database  and helps to build queries.
+            QuerySet in Django represent a collection of objects from database and helps to build queries.
 
           </p>
 
@@ -656,30 +656,110 @@ urlpatterns = [
             Deployed the app into EC2
           </b>
           <br>
+          <br>
+          Amazon's Elastic Compute Cloud (EC2) is an offering from Amazon, that allows developers to provision and run their
+          applications by creating instances of virtual machines in the cloud. EC2 also offers automatic scaling where
+          resources are allocated based on the amount of traffic received.
 
-          <img src="images/ec2.png"
-            style="width: 800px;height: 1000;display: block; margin-left: auto; margin-right: auto;">
+          <br>
+          <br>
+          In the EC2 dashboard, the Launch Instance portal will set up a new instance. Choose an Amazon Machine Image
+          (AMI).
+          Configure instance types and Security Groups. Make sure to add the local machine’s IP to access the EC2
+          machine’s public DNS.
+          If needed, Security Group can be configured to allow requests from anywhere. A key pair is generated after
+          launching the instance. This key-pair file is to be downloaded on the local system as it helps in connecting
+          to EC2 using SSH.
+          <br>
+          <br>
+          Locate your private key file and Change the access mode of the key and login to EC2 insatnce.
+          <pre>
+            <code> 
+chmod 400 Key_name.pem
+
+ssh -i “Djangokeypair.pem” ubuntu@ec2-54-205-35-247.compute-1.amazonaws.com
+          </code>
+        </pre>
+
+          <img src="images/ec_1.png"
+            style="width: 600px;height: 800;display: block; margin-left: auto; margin-right: auto;">
 
           <br>
           <br>
 
-          <b>
-            Application running status from EC2 console
-          </b>
+          Acticavate virtual environemnt: After login to EC2 instance, follow <a href="#first_django_project">First
+            Django project</a> from this tutorial and activate virtual environemnt.
+
+
+          <br>
+          <br>
+          <img src="images/ec_2.png"
+            style="width: 600px;height: 800;;display: block; margin-left: auto; margin-right: auto;">
+
+          <br>
           <br>
 
+          Setting Nginx Gunicorn: In our development, we are using the default HTTP server given by Django. But in our
+          production we will use
+          the Nginx server, it will perform faster. We can install Nginx using the following command:
+
+          <pre>
+
+
+          <code>
+sudo apt-get install -y nginx
+          </code>
+        </pre>
+
+          Setting Gunicorn: This is the WSGI interface which acts as a link between our Django application and the Nginx
+          Server using a mechanism called Unix Socket.
+
+
+          <br>
+          <br>
+
+
+          <img src="images/ec_3.png"
+            style="width: 600px;height: 800;;display: block; margin-left: auto; margin-right: auto;">
+
+
+          <br>
+          <br>
+
+
+
+          Now our next step will be to configure Nginx to read from the Socket file.
+          All the Nginx configuration are saved in <cite> /etc/nginx/sites-available</cite>.
+
+          Test the configuration, If the test is successful, we have to enable this file so that Nginx will read the
+          file.
+          <pre>
+          <code>
+sudo ln django.conf /etc/nginx/sites-enabled/
+sudo service nginx restart
+          </code>
+          </pre>
+
+          Now visit the website you will find the Application running:
+
+          <br>
+          <br>
 
           <img src="images/ec2_console.png"
-            style="width: 800px;height: 1000;display: block; margin-left: auto; margin-right: auto;">
+            style="width: 600px;height: 800;display: block; margin-left: auto; margin-right: auto;">
+
+          <br>
+
+          <br>
+          <img src="images/ec_4.png"
+            style="width: 600px;height: 800;display: block; margin-left: auto; margin-right: auto;">
 
 
           <br>
           <br>
-
-
 
           <b>
-            View the app
+            Short video of running app.
           </b>
           <br>
           <br>
@@ -929,7 +1009,7 @@ urlpatterns = [
         <!-- end of Reference -->
 
 
-      <br>
+        <br>
         <!-- FAQ -->
         <article id="faq" style="text-align:justify">
           <h2 style="color:brown">FAQ</h2>
@@ -975,7 +1055,7 @@ urlpatterns = [
 
         </article>
 
-          <!-- End of FAQ -->
+        <!-- End of FAQ -->
         <footer>
 
         </footer>
