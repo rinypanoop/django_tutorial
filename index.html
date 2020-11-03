@@ -99,11 +99,11 @@
       <a href="#mvc_views">
         <li>Views</li>
       </a>
+      <a href="#mvc_orm">
+        <li>Quesryset & ORM</li>
+      </a>
       <a href="#mvc_form">
         <li>Forms</li>
-      </a>
-      <a href="#mvc_orm">
-        <li>ORM</li>
       </a>
 
       <a href="#implementation">Implementation</a>
@@ -514,6 +514,42 @@ urlpatterns = [
           </p>
 
 
+          <p id="mvc_orm">
+            <b>Quesryset and ORM</b>
+            <br>
+            <br>
+
+            Object-relational mapper(ORM) is used to transfer data between model object and relational database.
+            The ORM automates this data transfer, and the developer need not write any SQL. ORM helps to write
+            error-free code and helps to increase productivity.
+
+
+            <br>
+            <br>
+            A QuerySet is a list of objects of a given Model. QuerySets allow you to read the data from the database, filter it and order it.
+
+            Open Django's interactive console by this command. 
+
+
+           <pre>
+             <code>
+(tutorialenv) ~/django$ python manage.py shell
+             </code>
+             </pre>
+           
+
+             This command will open below prompt/console.
+
+             <pre>
+               <code>
+(InteractiveConsole)
+>>>
+                
+               </code>
+             </pre>
+             Now type different commands like Post.objects.all(), Post.objects.create(author=me, title='Sample title', text='Test') for different posts and queries in database.
+          </p>
+
           <p id="mvc_form">
             <b>Django Forms</b>
             <br>
@@ -559,20 +595,7 @@ urlpatterns = [
           </p>
 
 
-          <p id="mvc_orm">
-            <b>Django ORM</b>
-            <br>
-            <br>
-
-            Object-relational mapper(ORM) is used to transfer data between model object and relational database.
-            The ORM automates this data transfer, and the developer need not write any SQL. ORM helps to write
-            error-free code and helps to increase productivity.
-
-            <br>
-            <br>
-            QuerySet in Django represent a collection of objects from database and helps to build queries.
-
-          </p>
+   
 
           <br>
 
