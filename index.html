@@ -107,6 +107,7 @@
       </a>
 
       <a href="#implementation">Implementation</a>
+      <a href="#deployment">Deployment</a>
       <a href="#django_flask">Django vs Flask</a>
       <a href="#future">Future and Conclusions</a>
       <a href="#bibliography">Bibliography</a>
@@ -625,19 +626,9 @@ urlpatterns = [
 
             <li>Follow <a href="#first_django_app">First Django App(mvc)</a> from this tutorial and create an app named
               todo.</li>
-            <li>Create following python classes.
-              <ul>
-                <li>models.py</li>
-                <li>admin.py</li>
-                <li>urls.py</li>
-                <li>views.py</li>
-                <li>forms.py</li>
-              </ul>
+
           </ol>
 
-          <b>
-            Components and interactions
-          </b>
           <br>
 
           <img src="images/impl.png"
@@ -645,25 +636,91 @@ urlpatterns = [
           <br>
           <br>
 
-          <b>
-            Sample code snippet
-          </b>
+          <b>A few basic steps:</b> 
+          <br> Creating virtual environment, Installing Django, creating and starting the project and creating app.
+          <br>
+          <br>
+         <b>Migrate database & create user: </b>
+          <br>For database(sqlite): In cmd: <code>python manage.py migrate </code>
+          <br>For creating user: Cmd: <code>python manage.py createsuperuser</code>
+
           <br>
           <pre>
             <code>  
-  File: todo/tasks/urls.py
+
+#File: todo/tasks/views.py
+
+Here is the view of delete Task:
+def deleteTask(request, pk): 
+item = Task.objects.get(id=pk) 
+if request.method == 'POST': item.delete() 
+  return redirect('/') context = {'item':item} 
+return render(request, 'tasks/delete.html', context)
+
+
+
+#File: todo/tasks/urls.py
+
+from django.urls import path
+from . import views
+urlpatterns = [
+  path('', views.index, name="list"),
+  path('update_task/', views.updateTask, name="update_task"),
+  path('delete/', views.deleteTask, name="delete"),
+]
+
+
+#File: todo/tasks/models.py
+from django.db import models
+class Task(models.Model):
+  title = models.CharField(max_length=200)
+  complete = models.BooleanField(default=False)
+  created = models.DateTimeField(auto_now_add=True)
+
+  def __str__(self):
+    return self.title
+
+
+#File: todo/tasks/admin.py
+
+from django.contrib import admin
+# Register your models here.
+from .models import *
+admin.site.register(Task)
+
   
-  from django.urls import path
-  from . import views
+#File: todo/tasks/forms.py
+
+from django import forms
+from django.forms import ModelForm
+from .models import *
+class TaskForm(forms.ModelForm):
+	title= forms.CharField(widget= forms.TextInput(attrs={'placeholder':'Add new task...'}))
+	class Meta:
+		model = Task
+		fields = '__all__'
   
-  urlpatterns = [
-    path('', views.index, name="list"),
-    path('update_task/', views.updateTask, name="update_task"),
-    path('delete/', views.deleteTask, name="delete"),
-  ]
+
             </code>
           </pre>
 
+  <b>
+    Templates: tasks/template/tasks > list.html, update_task.html, delete.html
+
+  </b>
+
+  <pre>
+  <code>
+#Delete.html
+
+<p>Are you sure you want to delete "{{item}}"?</p>
+<a href="{% url 'list' %}" >Cancel</a>
+<form method="POST" action="">
+{% csrf_token %}
+<input type="submit" name="Confirm">
+</form>
+  </code>
+</pre>
           <b>
             Run the application locally
           </b>
@@ -675,10 +732,13 @@ urlpatterns = [
           <br>
           <br>
 
-          <b>
-            Deployed the app into EC2
-          </b>
-          <br>
+        </p>
+        <br>
+      </article>
+
+      <article id="deployment" style="text-align:justify">
+        <h2 style="color:brown">Deployment of the App</h2>
+        <p>
           <br>
           Amazon's Elastic Compute Cloud (EC2) is an offering from Amazon, that allows developers to provision and run their
           applications by creating instances of virtual machines in the cloud. EC2 also offers automatic scaling where
